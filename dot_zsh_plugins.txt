@@ -1,0 +1,12 @@
+romkatv/powerlevel10k
+z-shell/zsh-eza
+z-shell/zsh-zoxide
+
+Aloxaf/fzf-tab
+LeonRein/zsh-yazi-cd
+
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+
+laggardkernel/zsh-thefuck
