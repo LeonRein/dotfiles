@@ -1,4 +1,5 @@
 set fish_greeting
+set -x EDITOR helix
 
 bind \e\e thefuck-command-line
 
