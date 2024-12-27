@@ -4,4 +4,4 @@ email = "4107480+LeonRein@users.noreply.github.com"
 
 [ui]
 editor = "helix"
-default-command = ["log", "-r", "@ | ancestors(remote_bookmarks().., 4) | trunk()"]
+default-command = ["log", "-r", "@ | ancestors(remote_bookmarks().., 2) | trunk()"]
