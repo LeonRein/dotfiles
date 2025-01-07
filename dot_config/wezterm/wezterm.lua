@@ -27,39 +27,5 @@ config.font = wezterm.font(
   stretch='UltraCondensed', -- This doesn't seem to do anything
 })
 
-config.font_rules = {
-  { -- Italic
-    intensity = 'Normal',
-    italic = true,
-    font = wezterm.font({
-      -- family="Monaspace Radon",  -- script style
-      family='Monaspace Xenon', -- courier-like
-      style = 'Italic',
-    })
-  },
-
-  { -- Bold
-    intensity = 'Bold',
-    italic = false,
-    font = wezterm.font( {
-      family='Monaspace Krypton',
-      family='Monaspace Krypton',
-      -- weight='ExtraBold',
-      weight='Bold',
-      })
-  },
-
-  { -- Bold Italic
-    intensity = 'Bold',
-    italic = true,
-    font = wezterm.font( {
-      family='Monaspace Xenon',
-      style='Italic',
-      weight='Bold',
-      }
-    )
-  },
-}
-
 -- and finally, return the configuration to wezterm
 return config
