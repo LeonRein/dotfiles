@@ -22,7 +22,7 @@ config.window_padding = {
 config.font_size = 14
 config.font = wezterm.font({
   family='Iosevka Nerd Font',
-  harfbuzz_features={ 'dlig'},
+  harfbuzz_features={'calt', 'clig', 'liga', 'dlig'},
 })
 
 -- and finally, return the configuration to wezterm
