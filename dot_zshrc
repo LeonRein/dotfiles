@@ -1,27 +1,37 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Lines configured by zsh-newuser-install
+ZGENOM_HOME="${HOME}/.zgenom"
+[ ! -d $ZGENOM_HOME ] && mkdir -p "$ZGENOM_HOME"
+[ ! -d $ZGENOM_HOME/.git ] && git clone https://github.com/jandamm/zgenom.git "$ZGENOM_HOME"
+source "${ZGENOM_HOME}/zgenom.zsh"
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/hans/.zshrc'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+alias hx="helix"
 
-source /usr/share/zsh-antidote/antidote.zsh
-antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+zgenom autoupdate
+
+if ! zgenom saved; then
+  zgenom load romkatv/powerlevel10k powerlevel10k
+  zgenom load z-shell/zsh-eza
+  zgenom ohmyzsh plugins/ssh-agent
+  zgenom load LeonRein/zsh-yazi-cd
+  zgenom load laggardkernel/zsh-thefuck
+  zgenom load zsh-users/zsh-autosuggestions
+  zgenom load zsh-users/zsh-completions
+  zgenom load unixorn/fzf-zsh-plugin
+
+  zgenom compdef
+
+  zgenom load zdharma-continuum/fast-syntax-highlighting
+  zgenom load z-shell/zsh-zoxide
+
+  zgenom save
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-eval $(thefuck --alias)
