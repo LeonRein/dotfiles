@@ -20,10 +20,14 @@ config.window_padding = {
 
 -- font config
 config.font_size = 14
-config.font = wezterm.font({
-  family='Iosevka Nerd Font',
-  harfbuzz_features={'calt', 'clig', 'liga', 'dlig'},
-})
+config.font = wezterm.font_with_fallback{
+  {
+    family='Iosevka Nerd Font',
+    harfbuzz_features={'calt', 'clig', 'liga', 'dlig'},
+  },
+  'DejaVu Sans Mono',
+  'HanaMinA',
+}
 
 -- and finally, return the configuration to wezterm
 return config
