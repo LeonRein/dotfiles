@@ -13,11 +13,15 @@ SAVEHIST=1000
 
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
-
-export EDITOR=helix
+if command -v helix >/dev/null 2>&1
+then
+    alias hx="helix"
+    export EDITOR=helix
+else
+    export EDITOR=hx
+fi
 export VISUAL="$EDITOR"
 
-alias hx="helix"
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent quiet yes
 
