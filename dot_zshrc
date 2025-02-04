@@ -22,6 +22,8 @@ else
 fi
 export VISUAL="$EDITOR"
 
+bindkey "^[[3~" delete-char
+
 zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent quiet yes
 
