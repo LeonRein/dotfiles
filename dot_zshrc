@@ -36,6 +36,7 @@ if ! zgenom saved; then
   zgenom load z-shell/zsh-eza
   zgenom load LeonRein/zsh-yazi-cd
   zgenom load laggardkernel/zsh-thefuck
+  zgenom load xPMo/zsh-toggle-command-prefix
   zgenom load zsh-users/zsh-autosuggestions
   zgenom load zsh-users/zsh-completions
   zgenom load unixorn/fzf-zsh-plugin
