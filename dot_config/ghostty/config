@@ -1,0 +1,12 @@
+# Use the Dracula theme
+theme = dracula
+
+# Set the terminal font to Iosevka (you can adjust the exact name if needed)
+font-family = "Iosevka Nerd Font"
+font-size = 14
+
+# Enable all available font ligatures:
+# Here we explicitly enable the common ligature features: contextual alternates (calt),
+# standard ligatures (liga) and discretionary ligatures (dlig).
+font-feature = +calt, +liga, +dlig
+
