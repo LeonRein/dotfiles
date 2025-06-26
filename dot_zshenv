@@ -1,0 +1,31 @@
+# SSH Agent configuration for all zsh sessions (including non-interactive)
+# This ensures VS Code and other GUI applications can access ssh-agent
+
+# SSH Agent setup
+SSH_AGENT_FILE="$HOME/.ssh/ssh-agent-environment"
+
+# Function to start ssh-agent
+start_ssh_agent() {
+    ssh-agent -s > "$SSH_AGENT_FILE"
+    chmod 600 "$SSH_AGENT_FILE"
+    source "$SSH_AGENT_FILE" > /dev/null
+}
+
+# Function to check if agent is accessible without triggering key operations
+is_agent_accessible() {
+    # Check if we have the environment variables and the process exists
+    [[ -n "$SSH_AUTH_SOCK" ]] && [[ -n "$SSH_AGENT_PID" ]] && kill -0 "$SSH_AGENT_PID" 2>/dev/null
+}
+
+# Load existing agent environment if available
+if [[ -f "$SSH_AGENT_FILE" ]]; then
+    source "$SSH_AGENT_FILE" > /dev/null
+fi
+
+# Start agent only if not accessible
+if ! is_agent_accessible; then
+    start_ssh_agent
+fi
+
+export SSH_AUTH_SOCK
+export SSH_AGENT_PID

@@ -24,14 +24,10 @@ export VISUAL="$EDITOR"
 
 bindkey "^[[3~" delete-char
 
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent quiet yes
-
 zgenom autoupdate
 
 if ! zgenom saved; then
   zgenom load romkatv/powerlevel10k powerlevel10k
-  zgenom ohmyzsh plugins/ssh-agent
   zgenom load conda-incubator/conda-zsh-completion
   zgenom load z-shell/zsh-eza
   zgenom load LeonRein/zsh-yazi-cd
