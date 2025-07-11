@@ -1,4 +1,8 @@
-set fish_greeting
+if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
+    source /usr/share/cachyos-fish-config/cachyos-config.fish
+else
+    set fish_greeting
+end
 set -x EDITOR helix
 
 bind \e\e thefuck-command-line
