@@ -3,9 +3,15 @@ if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
 else
     set fish_greeting
 end
+
 set -x EDITOR helix
 
 bind \e\e thefuck-command-line
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    fenv source /etc/profile
+end
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -16,13 +22,11 @@ function y
     rm -f -- "$tmp"
 end
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-    fenv source /etc/profile
-end
-
-# source "$HOME/.cargo/env.fish"
-
 set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
 
 alias hx="helix"
+
+if test -e /opt/miniconda3/etc/fish/conf.d/conda.fish
+    set -x CRYPTOGRAPHY_OPENSSL_NO_LEGACY
+    source /opt/miniconda3/etc/fish/conf.d/conda.fish
+end
