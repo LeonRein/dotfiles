@@ -27,6 +27,6 @@ set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
 alias hx="helix"
 
 if test -e /opt/miniconda3/etc/fish/conf.d/conda.fish
-    set -x CRYPTOGRAPHY_OPENSSL_NO_LEGACY
+    set -x CRYPTOGRAPHY_OPENSSL_NO_LEGACY 1
     source /opt/miniconda3/etc/fish/conf.d/conda.fish
 end
