@@ -24,6 +24,6 @@ config.initial_rows = 28
 
 -- font config
 config.font_size = 14
-
+config.font = wezterm.font_with_fallback { 'Iosevka Nerd Font', 'JetBrains Mono', 'Noto Color Emoji' }
 -- and finally, return the configuration to wezterm
 return config
