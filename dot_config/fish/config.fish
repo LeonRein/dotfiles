@@ -6,7 +6,7 @@ end
 
 set -x EDITOR helix
 
-bind \e\e thefuck-command-line
+bind alt-f thefuck-command-line
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
