@@ -30,8 +30,3 @@ alias zac="zellij attach -c"
 if test -e ~/export-esp.sh
     source ~/export-esp.sh
 end
-
-if test -e /opt/miniconda3/etc/fish/conf.d/conda.fish
-    set -x CRYPTOGRAPHY_OPENSSL_NO_LEGACY 1
-    source /opt/miniconda3/etc/fish/conf.d/conda.fish
-end
