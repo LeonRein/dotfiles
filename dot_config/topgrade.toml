@@ -219,7 +219,7 @@
 
 # wsl_update_use_web_download = true
 
-# The default for winget_install_silently is true, 
+# The default for winget_install_silently is true,
 # this example turns off silent install.
 # winget_install_silently = false
 
@@ -279,6 +279,8 @@
 # ignored_containers = ["ghcr.io/rancher-sandbox/rancher-desktop/rdx-proxy:latest", "docker.io*"]
 # Specify the runtime to use for containers (default: "docker", allowed values: "docker", "podman")
 # runtime = "podman"
+use_sudo = true
+system_prune = true
 
 [lensfun]
 # If disabled, Topgrade invokes `lensfun‑update‑data` without root priviledge,
