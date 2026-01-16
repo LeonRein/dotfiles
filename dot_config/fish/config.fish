@@ -27,6 +27,8 @@ set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
 alias hx="helix"
 alias zac="zellij attach -c"
 
+fish_add_path ~/.cargo/bin
+
 if test -e ~/export-esp.sh
     source ~/export-esp.sh
 end
