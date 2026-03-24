@@ -4,7 +4,12 @@ email = "4107480+LeonRein@users.noreply.github.com"
 
 [ui]
 editor = "helix"
-default-command = ["log", "-r", "ancestors(@, 10) | ancestors(remote_bookmarks().., 2) | heads(ancestors(@, 10)::) | trunk()"]
+default-command = ["log", "-r", "ancestors(@, 10) | latest(visible_heads(), 5) | (ancestors(@..latest(visible_heads(), 5),2) & ::@) | latest(bookmarks(), 5) | (ancestors(@..latest(bookmarks(), 5),2) & ::@) | trunk()"]
+# ancestors(@, 10): gives the first 10 ancestors of @
+# ancestors(latest(visible_heads(), 5), 2): gives 2 ancestors of the latest 5 visible heads
+# ancestors(@..latest(visible_heads(), 5),2) & ::@: gives the branching commits between @ and the latest 5 visible heads
+# latest(bookmarks(), 5): gives the latest 5 bookmarks
+# ancestors(@..latest(visible_heads(), 5),2) & ::@: gives the branching commits between @ and the latest 5 visible heads
 
 [revsets]
 bookmark-advance-to = 'closest_pushable(@)'
