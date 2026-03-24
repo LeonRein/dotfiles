@@ -6,29 +6,31 @@ end
 
 set -x EDITOR helix
 
-bind alt-f thefuck-command-line
+fish_add_path ~/.cargo/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
     fenv source /etc/profile
-end
 
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
+    bind alt-f thefuck-command-line
+
+    set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
+
+    alias hx="helix"
+    alias zac="zellij attach -c"
+
+    jj util completion fish | source
+
+    function y
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
     end
-    rm -f -- "$tmp"
-end
 
-set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
-
-alias hx="helix"
-alias zac="zellij attach -c"
-
-fish_add_path ~/.cargo/bin
-
-if test -e ~/export-esp.sh
-    source ~/export-esp.sh
+    if test -e ~/export-esp.sh
+        source ~/export-esp.sh
+    end
 end
