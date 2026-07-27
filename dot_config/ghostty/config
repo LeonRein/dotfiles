@@ -10,3 +10,6 @@ font-size = 14
 # standard ligatures (liga) and discretionary ligatures (dlig).
 font-feature = +calt, +liga, +dlig
 
+# Default window size
+window-height = 30
+window-width = 130
