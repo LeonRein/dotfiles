@@ -1,1 +1,11 @@
 README.md
+{{ if eq .chezmoi.hostname "inge" }}
+# NAS (root, nur Shell): keine Desktop-Programme, kein SSH-Client-Setup, keine Git-Identität
+.config/ghostty
+.config/kitty
+.config/wezterm
+.config/jj
+.config/git
+.config/topgrade.toml
+.ssh
+{{ end }}

@@ -4,23 +4,28 @@ else
     set fish_greeting
 end
 
-set -x EDITOR helix
+# Arch/CachyOS: helix, Debian: hx
+if command -q helix
+    set -x EDITOR helix
+else
+    set -x EDITOR hx
+end
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fenv source /etc/profile
+    functions -q fenv; and fenv source /etc/profile
 
-    bind alt-f thefuck-command-line
+    functions -q thefuck-command-line; and bind alt-f thefuck-command-line
 
     set -x EXA_STANDARD_OPTIONS --group --header --group-directories-first --icons
 
-    alias hx="helix"
+    command -q helix; and alias hx="helix"
     alias zac="zellij attach -c"
 
-    jj util completion fish | source
+    command -q jj; and jj util completion fish | source
 
     function y
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
