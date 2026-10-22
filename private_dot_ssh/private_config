@@ -1,0 +1,6 @@
+AddKeysToAgent yes
+
+Host inge-unlock
+    HostName 192.168.178.2
+    Port 2222
+    User root
