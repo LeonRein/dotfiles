@@ -29,6 +29,8 @@
 
 # Disable specific steps - same options as the command line flag
 # disable = ["system", "emacs"]
+# Flatpaks laufen über Shelly (`shelly upgrade all`), nicht über den eigenen Flatpak-Schritt
+disable = ["flatpak"]
 
 # Run these steps before all others
 # first = ["chezmoi"]
