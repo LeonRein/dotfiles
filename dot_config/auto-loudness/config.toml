@@ -1,0 +1,113 @@
+ref_knob_db = -19.0
+low_hz = 35  # a little below the speakers' limit, for tolerance
+
+# Mono-Bass: wirkt nur bei Aufnahmen, deren Bass links und rechts verschieden ist.
+# Füllt dann die Senke der linken Box bei 62–82 Hz. 0 = aus.
+mono_bass_hz = 110
+#mono_bass_hz = 0   # aus
+
+# --- Raummoden (nachgeschärft nach der Messung mit EQ vom 12.11.2026) ---
+# Unter der Mono-Bass-Weiche (110 Hz) spielen beide Boxen dasselbe: dort gleiche Filter
+# für beide, ausgelegt auf den Bass beider Boxen zusammen.
+[[eq]]
+type = "peaking"   # Längsmode 40 Hz
+freq = 41.7
+q = 10.0
+gain = -12.3
+
+[[eq]]
+type = "peaking"   # Breitenmode 44 Hz
+freq = 45.7
+q = 10.0
+gain = -5.5
+
+[[eq]]
+type = "peaking"   # Mode 60 Hz
+freq = 59.5
+q = 10.0
+gain = -2.3
+
+# Über der Weiche spielt jede Box ihr eigenes Signal: Filter je Box.
+[[eq]]
+type = "peaking"   # Modencluster 120 Hz
+channel = "left"
+freq = 121.1
+q = 10.0
+gain = -12.4
+
+[[eq]]
+type = "peaking"
+channel = "left"
+freq = 185.0
+q = 10.0
+gain = -1.6
+
+[[eq]]
+type = "peaking"   # Modencluster 120 Hz
+channel = "right"
+freq = 120.0
+q = 10.0
+gain = -15.8
+
+# Ohne Mono-Bass (mono_bass_hz = 0) passen getrennte Bassfilter besser: dann die drei
+# gemeinsamen Filter oben auskommentieren und diese hier aktivieren.
+#[[eq]]
+#type = "peaking"
+#channel = "left"
+#freq = 42.0
+#q = 8.0
+#gain = -13.5
+#
+#[[eq]]
+#type = "peaking"
+#channel = "right"
+#freq = 42.0
+#q = 8.0
+#gain = -9.5
+#
+#[[eq]]
+#type = "peaking"   # Breitenmode 44 Hz: nur die rechte Box regt sie an
+#channel = "right"
+#freq = 45.0
+#q = 8.0
+#gain = -7.5
+#
+#[[eq]]
+#type = "peaking"   # Mode 60 Hz: nur die rechte Box regt sie an
+#channel = "right"
+#freq = 59.5
+#q = 8.0
+#gain = -4.5
+
+# --- Lautsprecher selbst: spinorama AutomaticEQ (IIR) aus Erins Klippel-Messung, ohne die
+#     beiden Bassbänder (37 Hz +1,5 dB, 139 Hz -1,9 dB), die hier die Raum-EQ ersetzt ---
+[[eq]]
+type = "peaking"
+freq = 356
+q = 0.49
+gain = 2.41
+
+[[eq]]
+type = "peaking"
+freq = 439
+q = 1.31
+gain = -2.61
+
+[[eq]]
+type = "peaking"   # Buckel bei 1,3 kHz, auch in deiner Messung sichtbar (+2,8 dB)
+freq = 1288
+q = 2.95
+gain = -2.73
+
+[[eq]]
+type = "peaking"
+freq = 1954
+q = 2.03
+gain = 1.88
+
+# --- Hochton: leichte Senke 5–12 kHz im Direktschall (deine Messung und Erin) ---
+[[eq]]
+type = "peaking"
+freq = 8000
+q = 1.0
+gain = 1.5

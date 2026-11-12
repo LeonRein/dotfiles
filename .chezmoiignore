@@ -7,5 +7,6 @@ README.md
 .config/jj
 .config/git
 .config/topgrade.toml
+.config/auto-loudness
 .ssh
 {{ end }}
