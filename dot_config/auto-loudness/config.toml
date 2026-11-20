@@ -6,48 +6,63 @@ low_hz = 35  # a little below the speakers' limit, for tolerance
 mono_bass_hz = 110
 #mono_bass_hz = 0   # aus
 
-# --- Raummoden (nachgeschärft nach der Messung mit EQ vom 12.11.2026) ---
-# Unter der Mono-Bass-Weiche (110 Hz) spielen beide Boxen dasselbe: dort gleiche Filter
-# für beide, ausgelegt auf den Bass beider Boxen zusammen.
+# --- Raummoden: zeitbewusst ausgelegt (20.11.2026) ---
+# Ziel: eingeschwungen nicht über der Zielkurve (kein Dröhnen), der Anschlag (erste 3 Schwingungen)
+# aber nicht darunter. Gemittelt über alle 6 Mikrofonpositionen. Vorher: config.toml.bak-2026-11-20.
+# Unter der Mono-Bass-Weiche (110 Hz) spielen beide Boxen dasselbe: dort gleiche Filter für beide.
 [[eq]]
 type = "peaking"   # Längsmode 40 Hz
-freq = 41.7
+freq = 41.8
 q = 10.0
-gain = -12.3
+gain = -6.7
 
 [[eq]]
 type = "peaking"   # Breitenmode 44 Hz
-freq = 45.7
+freq = 45.2
 q = 10.0
-gain = -5.5
+gain = -3.7
 
 [[eq]]
 type = "peaking"   # Mode 60 Hz
-freq = 59.5
+freq = 59.6
 q = 10.0
-gain = -2.3
+gain = -2.7
 
 # Über der Weiche spielt jede Box ihr eigenes Signal: Filter je Box.
 [[eq]]
 type = "peaking"   # Modencluster 120 Hz
 channel = "left"
-freq = 121.1
-q = 10.0
-gain = -12.4
+freq = 121.0
+q = 9.9
+gain = -8.6
 
 [[eq]]
 type = "peaking"
 channel = "left"
-freq = 185.0
-q = 10.0
-gain = -1.6
+freq = 170.6
+q = 3.9
+gain = -1.9
 
 [[eq]]
-type = "peaking"   # Modencluster 120 Hz
+type = "peaking"   # Modencluster 120 Hz (zwei Filter übereinander: Q>10 geht nicht)
 channel = "right"
-freq = 120.0
+freq = 119.2
 q = 10.0
-gain = -15.8
+gain = -10.1
+
+[[eq]]
+type = "peaking"
+channel = "right"
+freq = 120.7
+q = 8.1
+gain = -3.7
+
+[[eq]]
+type = "peaking"
+channel = "right"
+freq = 151.4
+q = 10.0
+gain = -2.7
 
 # Ohne Mono-Bass (mono_bass_hz = 0) passen getrennte Bassfilter besser: dann die drei
 # gemeinsamen Filter oben auskommentieren und diese hier aktivieren.
