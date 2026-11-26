@@ -13,3 +13,11 @@ font-feature = +calt, +liga, +dlig
 # Default window size
 window-height = 30
 window-width = 130
+
+# Shell: immer fish (Ghostty nimmt sonst die Login-Shell aus /etc/passwd, im Webtop bash).
+# Im Webtop kommt fish aus Homebrew, sonst aus dem System.
+{{- if stat "/home/linuxbrew/.linuxbrew/bin/fish" }}
+command = /home/linuxbrew/.linuxbrew/bin/fish
+{{- else }}
+command = {{ lookPath "fish" | default "/usr/bin/fish" }}
+{{- end }}
