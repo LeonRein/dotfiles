@@ -29,8 +29,11 @@
 
 # Disable specific steps - same options as the command line flag
 # disable = ["system", "emacs"]
-# Flatpaks laufen über Shelly (`shelly upgrade all`), nicht über den eigenen Flatpak-Schritt
-disable = ["flatpak"]
+{{- if or (stat "/run/.containerenv") (stat "/.dockerenv") }}
+# Im Container (z. B. Webtop unter Podman/Docker): Systempakete kommen mit dem Image,
+# Container-Runtimes gibt es hier nicht. /run/.containerenv legt Podman an, /.dockerenv Docker.
+disable = ["system", "containers"]
+{{- end }}
 
 # Run these steps before all others
 # first = ["chezmoi"]
