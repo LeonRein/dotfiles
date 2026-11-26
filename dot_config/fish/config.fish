@@ -4,6 +4,11 @@ else
     set fish_greeting
 end
 
+# Homebrew (z. B. im Webtop-Container), nur wenn vorhanden
+if test -x /home/linuxbrew/.linuxbrew/bin/brew
+    /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+end
+
 # Arch/CachyOS: helix, Debian: hx
 if command -q helix
     set -x EDITOR helix
@@ -11,8 +16,12 @@ else
     set -x EDITOR hx
 end
 
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.local/bin
+# Eigene Pfade hinten an PATH anfügen, damit System- und Paketmanager-Programme Vorrang haben.
+# -P: direkt PATH statt der universellen fish_user_paths (die fish immer VOR PATH stellt),
+# -a: hinten anfügen, -m: schon vorhandene Einträge (z. B. alte fish_user_paths) nach hinten verschieben.
+# (z. B. legt Webtop ~/.local/bin/bwrap -> proot an, das sonst das echte bubblewrap verdeckt)
+fish_add_path -aPm ~/.cargo/bin
+fish_add_path -aPm ~/.local/bin
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
