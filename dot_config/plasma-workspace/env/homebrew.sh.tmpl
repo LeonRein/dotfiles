@@ -1,0 +1,4 @@
+{{- if or (stat "/run/.containerenv") (stat "/.dockerenv") -}}
+# Nur im Container (Webtop): Homebrew im PATH der Desktop-Sitzung (z. B. damit Ghostty "fish" findet)
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+{{ end -}}

@@ -1,0 +1,4 @@
+{{- if or (stat "/run/.containerenv") (stat "/.dockerenv") -}}
+# Nur im Container (Webtop): Flatpak-Apps im Startmenü; der Sitzungsstart dort liest /etc/profile.d/flatpak.sh nicht
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+{{ end -}}
