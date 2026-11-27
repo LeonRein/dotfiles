@@ -3,6 +3,8 @@ theme = dracula
 
 # Set the terminal font to Iosevka (you can adjust the exact name if needed)
 font-family = "Iosevka Nerd Font"
+# Zweiter Name derselben Schrift: ältere fontconfig-Versionen (z. B. im Ghostty-AppImage) kennen nur "Iosevka NF"
+font-family = "Iosevka NF"
 font-size = 14
 
 # Enable all available font ligatures:
